@@ -11,7 +11,7 @@ async def root():
 
     visits_count = await get_visits("root")
 
-    return {"message": "Hello World from ci/cd", "visits count": visits_count}
+    return {"message": "Hello World from ci/cd - deployed by Rush", "visits count": visits_count}
 
 
 @app.get("/hello/{name}")
