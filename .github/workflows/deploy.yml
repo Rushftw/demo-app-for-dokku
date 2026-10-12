@@ -1,0 +1,17 @@
+name: dokku demo
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Push to Dokku
+        run: |
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=accept-new" \
+          git push dokku@localhost:demo-app HEAD:refs/heads/master --force
